@@ -1,1 +1,1 @@
-Sitemap: dibya.online/sitemap.xml
+Sitemap: https://dibya.online/sitemap.xml
