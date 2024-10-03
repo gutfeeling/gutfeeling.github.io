@@ -10,7 +10,7 @@ website:
         href: https://github.com/
       - icon: twitter
         href: https://twitter.com
-  site-url: dibya.online
+  site-url: https://dibya.online
 format:
   html:
     theme: cosmo
