@@ -1,1 +1,1 @@
-Sitemap: https://gutfeeling.github.io/sitemap.xml
+Sitemap: dibya.online/sitemap.xml
