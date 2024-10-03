@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gutfeeling.github.io/index.html</loc>
-    <lastmod>2024-10-03T21:01:12.371Z</lastmod>
+    <loc>https://gutfeeling.github.io/about.html</loc>
+    <lastmod>2024-10-03T21:52:00.956Z</lastmod>
   </url>
   <url>
     <loc>https://gutfeeling.github.io/posts/welcome/index.html</loc>
-    <lastmod>2024-10-03T21:01:12.375Z</lastmod>
+    <lastmod>2024-10-03T21:52:00.957Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gutfeeling.github.io/index.html</loc>
+    <lastmod>2024-10-03T21:52:00.956Z</lastmod>
   </url>
   <url>
     <loc>https://gutfeeling.github.io/posts/test/index.html</loc>
-    <lastmod>2024-10-03T21:01:12.371Z</lastmod>
+    <lastmod>2024-10-03T21:52:00.956Z</lastmod>
   </url>
   <url>
     <loc>https://gutfeeling.github.io/posts/post-with-code/index.html</loc>
-    <lastmod>2024-10-03T21:01:12.371Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gutfeeling.github.io/about.html</loc>
-    <lastmod>2024-10-03T21:01:12.371Z</lastmod>
+    <lastmod>2024-10-03T21:52:00.956Z</lastmod>
   </url>
 </urlset>
