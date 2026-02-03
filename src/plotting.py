@@ -236,8 +236,15 @@ def _build_puzzle_figure(puzzle: Mapping[str, Any], show_test: bool = False, wid
 
     for p, (in_grid, out_grid) in enumerate(pairs):
         row = p // 2 + 1
-        col_in = (p % 2) * 2 + 1
-        col_out = (p % 2) * 2 + 2
+        # Default layout: 2 pairs per row -> (input1|output1|input2|output2)
+        # If we have an odd number of pairs, center the single last pair
+        # in the middle columns (2 and 3) of the last row instead of left-aligning.
+        if n_pairs % 2 == 1 and p == n_pairs - 1:
+            col_in = 2
+            col_out = 3
+        else:
+            col_in = (p % 2) * 2 + 1
+            col_out = (p % 2) * 2 + 2
         fig.add_trace(arc_heatmap(in_grid, gap=gap), row=row, col=col_in)
         if out_grid is not None:
             fig.add_trace(arc_heatmap(out_grid, gap=gap), row=row, col=col_out)
@@ -277,8 +284,14 @@ def _build_puzzle_figure(puzzle: Mapping[str, Any], show_test: bool = False, wid
     # Right-pointing triangles between input → output for each pair; "?" on test output cells
     for p, (_, out_grid) in enumerate(pairs):
         row = p // 2 + 1
-        col_in = (p % 2) * 2 + 1
-        col_out = (p % 2) * 2 + 2
+        # Mirror the same centering logic used when adding heatmap traces so that
+        # arrows and "?" annotations line up with the visible subplots.
+        if n_pairs % 2 == 1 and p == n_pairs - 1:
+            col_in = 2
+            col_out = 3
+        else:
+            col_in = (p % 2) * 2 + 1
+            col_out = (p % 2) * 2 + 2
         idx_in = (row - 1) * 4 + col_in
         idx_out = (row - 1) * 4 + col_out
         xaxis_in_name = "xaxis" if idx_in == 1 else f"xaxis{idx_in}"
