@@ -73,9 +73,9 @@ figures:
       y_title: "Score [%]"
       y_range: [-2, 82]  # Uncomment and set values to override
     series_names:
-      baseline: "Pure CoT"
+      baseline: "Plain CoT"
       interleaved: "Agentic Coding"
-      baseline_stacked: "Pure CoT"
+      baseline_stacked: "Plain CoT"
       improvement_stacked: "with Agentic Coding"
     layout:
       height: 400
