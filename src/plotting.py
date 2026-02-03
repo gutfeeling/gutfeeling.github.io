@@ -360,7 +360,9 @@ def show_puzzle(
         return fig
 
     code_path = get_solution_path(puzzle_id)
-    plotly_html = fig.to_html(include_plotlyjs="cdn", full_html=False)
+    # Apply interactivity config from style.yml
+    cfg = _plotly_config_for("puzzle")
+    plotly_html = fig.to_html(include_plotlyjs="cdn", full_html=False, config=cfg)
     if not code_path.exists():
         code_html = '<p style="margin-top: 1em; color: #666;">no code found</p>'
     else:
@@ -434,6 +436,47 @@ def _get_figure_config(fig_key: str, style: dict | None = None) -> dict:
     data = style if style is not None else _load_style_yml()
     figures = data.get("figures") or {}
     return figures.get(fig_key) or {}
+
+
+def _is_figure_interactive(fig_key: str, style: dict | None = None) -> bool:
+    """
+    Return whether a given figure should be interactive, based on style.yml.
+    
+    Special case: puzzle figures default to False (static) if not specified.
+    Other figures default to True (interactive) if not specified.
+    """
+    data = style if style is not None else _load_style_yml()
+    figures = data.get("figures") or {}
+    cfg = figures.get(fig_key) or {}
+    
+    # Check if interactive flag is explicitly set
+    if "interactive" in cfg:
+        return bool(cfg["interactive"])
+    
+    # Special case: puzzle figures default to static
+    if fig_key == "puzzle":
+        return False
+    
+    # For other figures, check defaults, then fall back to True
+    defaults = figures.get("defaults") or {}
+    default_interactive = defaults.get("interactive", True)
+    return bool(default_interactive)
+
+
+def _plotly_config_for(fig_key: str, style: dict | None = None) -> dict:
+    """
+    Return plotly.js config dict, toggling interactions based on style.yml.
+    
+    Returns empty dict {} for interactive plots, or static config for non-interactive plots.
+    """
+    interactive = _is_figure_interactive(fig_key, style)
+    if interactive:
+        return {}
+    return {
+        "staticPlot": True,          # Disable panning/zooming/hover
+        "displayModeBar": False,     # Hide toolbar
+        "responsive": False,
+    }
 
 
 def _merge_dicts(
@@ -747,6 +790,22 @@ def add_scatter_traces_to_subplot(
             )
 
     return fig
+
+
+def display_figure(fig: go.Figure, fig_key: str) -> None:
+    """
+    Display a Plotly figure with interactivity controlled by style.yml.
+    
+    Args:
+        fig: The Plotly figure to display.
+        fig_key: Key in style.yml figures section (e.g., "scatter_baseline_vs_interleaved",
+                "bar_baseline_vs_interleaved", "tool_calls_histogram", "puzzle").
+    
+    This helper applies the interactivity setting from style.yml when displaying
+    the figure, allowing per-figure control over whether plots are interactive or static.
+    """
+    config = _plotly_config_for(fig_key)
+    fig.show(config=config)
 
 
 # ---------------------------------------------------------------------------

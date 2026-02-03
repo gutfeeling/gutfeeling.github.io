@@ -36,6 +36,10 @@ colors:
 
 # Figures that use blog/data/baseline_vs_interleaved.json share colors and shapes here.
 figures:
+  # Default interactivity setting (can be overridden per figure)
+  defaults:
+    interactive: false  # Default to interactive unless overridden
+
   baseline_vs_interleaved:
     colors:
       baseline: "#808080"   # Grey for baseline/CoT
@@ -45,6 +49,7 @@ figures:
       interleaved: "star"
 
   scatter_baseline_vs_interleaved:
+    interactive: true  # Set to false for static plot
     axis:
       x_title: "Cost per task [$]"
       y_title: "Score [%]"
@@ -68,6 +73,7 @@ figures:
       extra_fields: [modelId, datasetId, modelType, modelGroup, providerId]
 
   bar_baseline_vs_interleaved:
+    interactive: false  # Set to false for static plot
     axis:
       x_title: "Model"
       y_title: "Score [%]"
@@ -83,8 +89,13 @@ figures:
       margin: { l: 50, r: 50, t: 40, b: 60 }
 
   tool_calls_histogram:
+    interactive: false  # Set to false for static plot
     bar_color: "#D2691E"  # Same as interleaved/agentic; configurable here
     layout:
       height: 400
       width: 520
       margin: { l: 60, r: 30, t: 40, b: 60 }
+
+  # ARC puzzle heatmap figures (produced by show_puzzle)
+  puzzle:
+    interactive: false  # Default to static; set to true for interactive heatmaps
