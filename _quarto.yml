@@ -1,5 +1,15 @@
 project:
   type: website
+  output-dir: _output
+  # Run code from blog root so src/ and data/ resolve with simple relative paths
+  execute-dir: project
+  # Only render root pages and index.* in each post folder (not every .md/.qmd/.ipynb in subdirs)
+  render:
+    - index.qmd
+    - about.qmd
+    - "posts/*/index.qmd"
+    - "posts/*/index.md"
+    - "posts/*/index.ipynb"
 
 website:
   title: "Dibya's Blog"
@@ -7,9 +17,9 @@ website:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/gutfeeling
+      - icon: twitter-x
+        href: https://x.com/dibyasays
   site-url: https://dibya.online
 format:
   html:
