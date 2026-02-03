@@ -55,7 +55,7 @@ figures:
       y_title: "Score [%]"
       # Optional: manually set axis ranges [min, max]
       # If not specified, x-axis auto-calculates from data, y-axis auto-scales
-      x_range: [-0.5, 4.6]  # Uncomment and set values to override
+      x_range: [-0.5, 5.5]  # Uncomment and set values to override
       y_range: [0, 85]  # Uncomment and set values to override
     marker:
       size: 12
