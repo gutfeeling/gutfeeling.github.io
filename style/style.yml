@@ -11,17 +11,7 @@ code_highlight:
 colors:
   # Palette name to use for rendering (must match a palette key below, e.g., "arc_custom" or "arc_original")
   palette: "arc_original"
-  arc_custom:
-    - "#1a1a1a"   # 0: Dark black
-    - "#0866ff"   # 1: Meta (blue)
-    - "#FF4136"   # 2: red
-    - "#10a37f"   # 3: OpenAI (teal)
-    - "#FFD800"   # 4: Mistral (yellow)
-    - "#4a4a4a"   # 5: Custom (gray)
-    - "#7c3aed"   # 6: Deepseek (purple)
-    - "#ff6600"   # 7: Alibaba (orange)
-    - "#7FDBFF"   # 8: cyan
-    - "#A50E0E"   # 9: Google (dark red)
+
   arc_original:
     - "#000"     # 0: black
     - "#0074D9"  # 1: blue
@@ -49,7 +39,7 @@ figures:
       interleaved: "star"
 
   scatter_baseline_vs_interleaved:
-    interactive: true  # Set to false for static plot
+    interactive: false  # Set to false for static plot
     axis:
       x_title: "Cost per task [$]"
       y_title: "Score [%]"
