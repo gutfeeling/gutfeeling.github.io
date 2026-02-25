@@ -1,0 +1,33 @@
+---
+title: "What kind of AI would you like?"
+author: "Dibya Chakravorty"
+date: "2/24/2026"
+categories:
+  - ai
+  - opinion
+---
+
+As the organizer of an [AGI focused meetup group](https://www.meetup.com/de-de/munchen-artificial-general-intelligence-meetup-group/) in my city, I regularly get to talk to a bunch of informed people about their perspective on present day frontier models and AI systems. What is getting clearer to me over time is that talking in terms of capability gaps between present day SOTA and the goalpost (AGI) is probably not the most useful framing for talking about the topic. 
+
+The problem with the framing is that the goalpost seems quite subjective. I am yet to meet two people who had the exact same definition of what constitutes an AGI for them. There are some people (including highly accomplished individuals like Peter Norvig) who think that [we already have AGI](https://www.noemamag.com/artificial-general-intelligence-is-already-here/), and this actually seems like a perfectly reasonable take to me! You can talk to frontier models about almost any topic, and they are already better than your average Joe in many domains. Of course, there are still many capability gaps i.e. things that are easy or possible for humans to do, but hard or impossible for machines to do. But turning that argument on its head, there are also capability gaps in the other direction i.e. things that are easy or possible for machines to do, but hard or impossible for humans. For example, no human is knowledgeable about every domain under the sun, while frontier models are broadly knowledgeable about almost everything.  
+
+This essentially brings us to the crux of the matter. Human intelligence and present day frontier models might just be two different forms of intelligence, with their different characteristics, and it might be pretty futile to order them in the mathematical sense. We still have to close some capability gaps due to purely economic reasons, but philosophically, that's not the interesting thing anymore.
+
+There's [something that Geoffrey Hinton said recently](https://www.youtube.com/watch?v=rGgGOccMEiY) that I find quite interesting and relevant to this discussion. Hinton has famously spent many years trying to come up with new architectures and training methods that better resemble what the human brain does. Recently, he admitted that he may have gotten it wrong. He had indulged in the fallacy that human-like intelligence is the only reasonable target, and therefore, trying to match the human brain is a safe bet. What he had ignored is that there can be many types of intelligences, just like there are many types of databases. And just like we have the [CAP theorem in distributed data systems](https://en.wikipedia.org/wiki/CAP_theorem), which states that one cannot have data **consistency** (all nodes have the same data), **availability** (every request receives a response), and **partition tolerance** (system operates despite network failures) simultaneously in any system, and there is a fundamental tradeoff between them, similarly intelligence may also be a tradeoff space, with the human brain occupying a narrow space in the possible spectrum. Specifically, he said that it's highly likely that such a fundamental tradeoff might exist for **energy efficiency** and **copy efficiency**. The human brain is clearly more enerrgy efficient, using 10 - 20 watts, whereas today's frontier models use several order of magnitudes more. Frontier models are clearly more copy efficient. Deep neural net weights can be downloaded instantly from Huggingface with a high bandwidth internet connection. You can also copy knowledge across different models via distillation. On the other hand, the classical way to transfer data from one brain to another is *teaching*, which is a low bandwidth and lossy process.
+
+Taking inspiration from Hinton's thesis, I have also been thinking about whether there could be such a fundamental tradeoff between continual learning and domain-generality i.e. whether AI with human-like continual learning will also naturally be human-like specialists. I want to elaborate on this in another essay, but I just wanted to mention this as another potential but still very speculative tradeoff. 
+
+As time goes by, this seems more and more to be the useful way of thinking about intelligence. To summarize the framing:
+
+- There are many different types of intelligence.
+- Intelligence is essentially a design space with potentially fundamental tradeoffs.
+- The intelligence that is currently being scaled commercially occupies a small spot in the design space.  One shouldn't think of it as the "one and the only one" form of artificial intelligence that's possible or even preferred.
+
+If this is true, then it immediately begs the following question:
+
+> Is the type of intelligence that's being currently scaled the one we want?
+
+In my opinion, this is the more important question than whether current frontier models are AGI or whether AGI is coming in N years.
+
+It's a very hard question because there are no right answers and no obvious benchmark to guide progress. It's more in the domain of art and design than science, though science will be needed to make ambitious imaginations and dreams possible.
+
