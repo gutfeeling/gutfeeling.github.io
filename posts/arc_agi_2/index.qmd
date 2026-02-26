@@ -4,7 +4,7 @@ description: An independent team working in their free time can make meaningful 
 author: "Dibya Chakravorty"
 image: image.png
 title-block-banner: image.png
-date: "24/2/2026"
+date: "2/24/2026"
 categories:
   - ai
   - arc-agi
