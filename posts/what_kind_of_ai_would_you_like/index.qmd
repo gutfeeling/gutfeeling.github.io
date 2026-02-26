@@ -4,7 +4,7 @@ description: \"When AGI?\" is not the interesting question
 author: "Dibya Chakravorty"
 image: image.png
 title-block-banner: image.png
-date: "2/24/2026"
+date: "2/26/2026"
 categories:
   - ai
   - opinion
