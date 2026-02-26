@@ -1,0 +1,37 @@
+---
+title: "Our ARC AGI 2 journey"
+description: An independent team working in their free time can make meaningful research progress
+author: "Dibya Chakravorty"
+image: image.png
+title-block-banner: image.png
+date: "2/2/2026"
+categories:
+  - ai
+  - arc-agi
+---
+
+My friends and I recently obtained a simple but surprising result on ARC AGI 2, getting > 4x performance improvement from GPT OSS 120B and double digit gains in GPT 5.2. Our [team's blog post](https://pivotools.github.io/pivotools-quarto-blog/posts/agentic_coding_arc_agi/) describes the work in formal detail, while I will record our journey here.
+
+My friends and I casually started working on ARC AGI 2 last summer, with the goal of participating in the ARC Prize Kaggle competition. Early on, we were exploring agentic coding with frontier reasoning models and found that models like o3 and o4-mini could generate high-quality synthetic ARC-style puzzles. We planned to use these synthetic puzzles to train a smaller model via agentic reinforcement learning (RLVR with interleaved thinking).
+
+To bootstrap this process, we needed successful solution traces from an open-weight reasoning model for cold-start SFT. That requirement led us to investigate GPT-OSS-120B. Initially, we were disappointed since we weren't able to reliably elicit interleaved thinking from the model. This led us on a journey of investigating how vLLM implements the chat template for the model. We found that it is buggy, and patched vLLM to fix the bugs. This got us reliable interleaved thinking from GPT OSS.
+
+At this point, we noticed something unexpected: simply placing the model into an agentic coding regime produced large and consistent score improvements on the ARC AGI public eval. We are talking about > 4x improvement relative to plain COT. We couldn't believe the scores we were getting from a medium sized OSS model!
+
+This observation ultimately shifted the focus of our work as we wanted to find out how universally this observation applies. We found that the observation held for all three model families we tested, and at this point, we decided to publish our results.
+
+Shortly afterwards, Symbolica (a neolab) used our method to achieve SOTA on the ARC AGI 2 public eval with a newer model (Claude Opus 4.6). 
+
+<blockquote class="twitter-tweet" data-media-max-width="560"><p lang="en" dir="ltr">We set a new ARC-AGI-2 SotA: 85.28% using an Agentica agent (~350 lines) that writes and runs code. <a href="https://t.co/tohFfBZb2P">pic.twitter.com/tohFfBZb2P</a></p>&mdash; Agentica (@agenticasdk) <a href="https://twitter.com/agenticasdk/status/2021775348602491297?ref_src=twsrc%5Etfw">February 12, 2026</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+A few weeks later, a YCombinator startup Confluence Labs again used the same method to saturate the ARC AGI 2 public eval (97.6%) using yet another new model (Gemini 3.1 Pro).
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">.<a href="https://twitter.com/_confluencelabs?ref_src=twsrc%5Etfw">@_confluencelabs</a> is coming out of stealth with SOTA on ARC-AGI-2 (97.9%).<br><br>They&#39;re focused on learning efficiency — making AI useful where data is sparse and experiments are costly. Read more at <a href="https://t.co/K9NEFR6M0S">https://t.co/K9NEFR6M0S</a><br><br>Congrats on the launch, <a href="https://twitter.com/BingBongBrent?ref_src=twsrc%5Etfw">@BingBongBrent</a> and <a href="https://twitter.com/bankminer78?ref_src=twsrc%5Etfw">@bankminer78</a>!… <a href="https://t.co/4VjDyPNfvP">pic.twitter.com/4VjDyPNfvP</a></p>&mdash; Y Combinator (@ycombinator) <a href="https://twitter.com/ycombinator/status/2026084664503603649?ref_src=twsrc%5Etfw">February 24, 2026</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+Other than helping to move the SOTA, I think this has interesting scientific implications.
+
+- All the 5 model families tested by our group, Symbolica and Confluence Labs had a significant agentic RL posttraining phase. Since our method essentially performs inference under the exact same condition that was available during agentic RL training, we hypothesize that the jumps we see are indicative of increased fluid intelligence due to agentic RL training. 
+- There is a widespread belief that new frontier models are trained on massive amounts of synthetic ARC AGI 2 like puzzles. This is termed "benchmaxxing" and many people argue that the performance increases observed in the leaderboard aren't evidence of true fluid intelligence. This is where our results on open-weight models could provide interesting insights. The plain COT performance of the open-weight models we tested are at near noise levels (~ 5% on ARC AGI 2). Therefore allegations of "benchmaxxing" probably don't apply. However, in the inference regime that corresponds to agentic RL training, the performance of the very same models jump significantly. Could this be indicative of true increases in fluid intelligence?
+
+
+
